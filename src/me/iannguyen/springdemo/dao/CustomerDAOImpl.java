@@ -61,6 +61,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Session session = sessionFactory.getCurrentSession();
 
 		// make query - can also just do session.get
+		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery("DELETE FROM Customer WHERE id =:customerID");
 
 		query.setParameter("customerID", customerID);
@@ -76,6 +77,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         
         // instantiate query
+		@SuppressWarnings("rawtypes")
         Query query = null;
         
         // only search by name if theSearchName is not empty
@@ -92,6 +94,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         
         // execute query and get result list
+		@SuppressWarnings("unchecked")
         List<Customer> customers = query.getResultList();
                 
         // return the results        
